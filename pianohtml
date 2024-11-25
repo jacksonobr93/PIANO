@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZERTY Piano</title>
+    <style>
+        .key {
+            width: 40px;
+            height: 120px;
+            display: inline-block;
+            border: 1px solid black;
+            margin: 2px;
+            text-align: center;
+            line-height: 120px;
+            cursor: pointer;
+        }
+        .key.black {
+            background: black;
+            color: white;
+            height: 80px;
+            position: relative;
+            margin-left: -20px;
+            margin-right: -20px;
+            z-index: 1;
+        }
+        .key-container {
+            display: flex;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>Piano AZERTY</h1>
+    <div class="key-container">
+        <div class="key" data-note="C">A</div>
+        <div class="key black" data-note="C#">Z</div>
+        <div class="key" data-note="D">E</div>
+        <div class="key black" data-note="D#">R</div>
+        <div class="key" data-note="E">T</div>
+        <div class="key" data-note="F">Y</div>
+        <div class="key black" data-note="F#">U</div>
+        <div class="key" data-note="G">I</div>
+        <div class="key black" data-note="G#">O</div>
+        <div class="key" data-note="A">P</div>
+        <div class="key black" data-note="A#">Q</div>
+        <div class="key" data-note="B">S</div>
+        <div class="key" data-note="C2">D</div>
+    </div>
+    <script>
+        document.querySelectorAll('.key').forEach(key => {
+            key.addEventListener('click', () => {
+                const note = key.dataset.note;
+                const audio = new Audio(`https://4four.io/sounds/${note}.mp3`);
+                audio.play();
+            });
+        });
+    </script>
+</body>
+</html>
