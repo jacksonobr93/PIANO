@@ -55,6 +55,37 @@
                 audio.play();
             });
         });
+
+        document.addEventListener('keydown', (event) => {
+            const keyMap = {
+                'a': 'C',
+                'z': 'C#',
+                'e': 'D',
+                'r': 'D#',
+                't': 'E',
+                'y': 'F',
+                'u': 'F#',
+                'i': 'G',
+                'o': 'G#',
+                'p': 'A',
+                'q': 'A#',
+                's': 'B',
+                'd': 'C2',
+            };
+
+            const note = keyMap[event.key.toLowerCase()];
+            if (note) {
+                const audio = new Audio(`https://4four.io/sounds/${note}.mp3`);
+                audio.play();
+
+                // Optional: Add a visual effect for key press
+                const keyElement = document.querySelector(`.key[data-note="${note}"]`);
+                if (keyElement) {
+                    keyElement.classList.add('active');
+                    setTimeout(() => keyElement.classList.remove('active'), 200);
+                }
+            }
+        });
     </script>
 </body>
 </html>
